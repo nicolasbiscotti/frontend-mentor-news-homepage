@@ -12,6 +12,9 @@
   --font-weight-extra-bold: 800;
 
   --font-family: "Inter", sans-serif;
+
+  --content-vertical-separation: 2rem;
+  --content-lateral-padding: 1rem;
 }
 /*
   Josh's Custom CSS Reset
@@ -67,8 +70,8 @@ body {
   line-height: 1.625rem;
 
   display: grid;
-  gap: 2rem;
-  padding: 2rem 1rem;
+  gap: var(--content-vertical-separation);
+  padding: var(--content-vertical-separation) var(--content-lateral-padding);
 }
 a {
   color: inherit;
@@ -118,7 +121,7 @@ ul {
 /* Featured Story Styles */
 .featured-story {
   display: grid;
-  gap: 2rem;
+  gap: var(--content-vertical-separation);
 }
 .featured-story__title {
   color: var(--color-neutral-900);
@@ -133,10 +136,36 @@ ul {
   font-weight: var(--font-weight-bold);
 
   padding: 1rem;
-  
+
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: .25rem;
+  letter-spacing: 0.25rem;
 
   max-width: 50vw;
 }
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--color-neutral-900);
+
+  display: grid;
+  gap: var(--content-vertical-separation);
+
+  padding: var(--content-vertical-separation) var(--content-lateral-padding);
+}
+.sidebar__title {
+  color: var(--color-primary-200);
+  font-size: 2rem;
+}
+.sidebar__article {
+  display: grid;
+  gap: 1rem;
+}
+.sidebar__article h2 {
+  color: var(--color-neutral-100);
+  font-size: 1.325rem;
+}
+.sidebar__article p {
+  color: var(--color-neutral-300);
+}
+
