@@ -187,7 +187,7 @@ ul {
 }
 .random-category__article__main-content {
   display: grid;
-  /* gap: 1rem; */
+  gap: 0.5rem;
 
   padding-top: 5px;
 }
