@@ -15,6 +15,8 @@
 
   --content-vertical-separation: 2rem;
   --content-lateral-padding: 1rem;
+
+  --mobile-max-width: 600px;
 }
 /*
   Josh's Custom CSS Reset
@@ -72,6 +74,9 @@ body {
   display: grid;
   gap: var(--content-vertical-separation);
   padding: var(--content-vertical-separation) var(--content-lateral-padding);
+
+  max-width: var(--mobile-max-width);
+  margin: 0 auto;
 }
 a {
   color: inherit;
@@ -95,14 +100,15 @@ ul {
   align-items: center;
 }
 .main-bar__logo {
+  --logo-width: 65px;
+  --logo-heigth: 40px;
+  --reduction-percentage: 0.73;
+
   display: inline-flex;
   align-items: center;
-}
-.main-bar__logo::before {
-  content: "";
-  background-image: url("../assets/images/logo.svg");
-  width: 65px;
-  height: 40px;
+
+  width: calc(var(--logo-width) * var(--reduction-percentage));
+  height: calc(var(--logo-heigth) * var(--reduction-percentage));
 }
 
 /* Overly */
@@ -112,7 +118,7 @@ ul {
   position: fixed;
   top: 0;
   left: 0;
-  
+
   background-color: var(--color-neutral-900);
   opacity: 0.5;
 
@@ -126,14 +132,11 @@ ul {
   flex-direction: column;
   align-items: flex-end;
 }
-.menu::before {
-  cursor: pointer;
 
-  content: "";
-  background-image: url("../assets/images/icon-menu.svg");
-  width: 40px;
-  height: 17px;
+#menu-button {
+  cursor: pointer;
 }
+
 .menu__list {
   display: none;
 
@@ -141,6 +144,25 @@ ul {
 
   color: var(--color-neutral-900);
   font-size: 1.1625em;
+
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .menu {
+    flex-direction: row;
+  }
+
+  #menu-button {
+    display: none;
+  }
+
+  .menu__list {
+    display: flex;
+    gap: 1rem;
+  }
+}
+.menu__list a {
+  display: block;
 }
 
 .open {
@@ -156,14 +178,7 @@ ul {
   width: 70vw;
   height: 100vh;
 }
-.open::before {
-  cursor: pointer;
 
-  content: "";
-  background-image: url("../assets/images/icon-menu-close.svg");
-  width: 32px;
-  height: 31px;
-}
 .open .menu__list {
   display: flex;
   flex-direction: column;
@@ -251,6 +266,10 @@ ul {
 .random-category__article__main-content {
   display: grid;
   gap: 0.5rem;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
 
   padding-top: 5px;
 }

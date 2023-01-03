@@ -1,4 +1,6 @@
 const menu = document.querySelector(".menu");
+const menuButton = document.querySelector("#menu-button");
+console.log(menu);
 const overlay = document.querySelector(".overlay");
 
 const state = {
@@ -6,18 +8,18 @@ const state = {
   overlayIsOn: false,
 };
 
-menu.addEventListener("click", () => {
+menuButton.addEventListener("click", () => {
   if (state.menuIsOpen && state.overlayIsOn) {
-    menuClose(menu, state);
+    closeMenu(menuButton, menu, state);
     overlayOff(overlay, state);
   } else {
-    menuOpen(menu, state);
+    openMenu(menuButton, menu, state);
     overlayOn(overlay, state);
   }
 });
 
 overlay.addEventListener("click", () => {
-  menuClose(menu, state);
+  closeMenu(menuButton, menu, state);
   overlayOff(overlay, state);
 });
 
@@ -30,12 +32,14 @@ function overlayOff(overlay, state) {
   state.overlayIsOn = false;
 }
 
-function menuOpen(menu, state) {
+function openMenu(menuButton, menu, state) {
   addClass("open", menu.classList);
+  changeImage("icon-menu-close.svg", menuButton);
   state.menuIsOpen = true;
 }
 
-function menuClose(menu, state) {
+function closeMenu(menuButton, menu, state) {
+  changeImage("icon-menu.svg", menuButton);
   removeClass("open", menu.classList);
   state.menuIsOpen = false;
 }
@@ -45,4 +49,8 @@ function addClass(className, classList) {
 }
 function removeClass(className, classList) {
   classList.remove(className);
+}
+
+function changeImage(imageName, button) {
+  button.src = `./assets/images/${imageName}`;
 }
