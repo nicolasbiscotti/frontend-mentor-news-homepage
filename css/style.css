@@ -79,6 +79,8 @@ a {
 }
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Utility Classes */
@@ -103,12 +105,30 @@ ul {
   height: 40px;
 }
 
+/* Overly */
+.overlay-on {
+  cursor: pointer;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  background-color: var(--color-neutral-900);
+  opacity: 0.5;
+
+  width: 100vw;
+  height: 100vh;
+}
+
 /* Menu Styles */
 .menu {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 }
 .menu::before {
+  cursor: pointer;
+
   content: "";
   background-image: url("../assets/images/icon-menu.svg");
   width: 40px;
@@ -116,6 +136,38 @@ ul {
 }
 .menu__list {
   display: none;
+
+  align-self: flex-start;
+
+  color: var(--color-neutral-900);
+  font-size: 1.1625em;
+}
+
+.open {
+  background-color: var(--color-neutral-100);
+
+  gap: calc(var(--content-vertical-separation) * 3);
+  padding: 2rem 1rem;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: 70vw;
+  height: 100vh;
+}
+.open::before {
+  cursor: pointer;
+
+  content: "";
+  background-image: url("../assets/images/icon-menu-close.svg");
+  width: 32px;
+  height: 31px;
+}
+.open .menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* Main content */
@@ -131,19 +183,19 @@ ul {
 }
 .featured-story__title {
   color: var(--color-neutral-900);
-  font-size: 2.625rem;
+  font-size: 2.625em;
   font-weight: var(--font-weight-extra-bold);
   line-height: 2.625rem;
 }
 .featured-story__paragraph {
-  font-size: 0.925em;
+  font-size: 0.92em;
 }
 .featured-story__link {
   background-color: var(--color-primary-400);
 
   color: var(--color-neutral-100);
   font-weight: var(--font-weight-bold);
-  font-size: 0.875rem;
+  font-size: 0.875em;
 
   padding: 0.825rem 1rem;
 
@@ -161,11 +213,12 @@ ul {
   display: grid;
   gap: calc(var(--content-vertical-separation) * 0.875);
 
-  padding: calc(var(--content-vertical-separation) * 0.875) var(--content-lateral-padding);
+  padding: calc(var(--content-vertical-separation) * 0.875)
+    var(--content-lateral-padding);
 }
 .sidebar__title {
   color: var(--color-primary-200);
-  font-size: 2rem;
+  font-size: 2em;
 }
 .sidebar__article {
   display: grid;
@@ -173,11 +226,11 @@ ul {
 }
 .sidebar__article h2 {
   color: var(--color-neutral-100);
-  font-size: 1.325rem;
+  font-size: 1.325em;
 }
 .sidebar__article p {
   color: var(--color-neutral-300);
-  font-size: 0.975rem;
+  font-size: 0.975em;
 }
 
 /* Random Category */
@@ -198,7 +251,7 @@ ul {
 }
 .random-category__article__main-content span {
   color: var(--color-neutral-300);
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: var(--font-weight-bold);
 }
 .random-category__article__main-content h1 {
