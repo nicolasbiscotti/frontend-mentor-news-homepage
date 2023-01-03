@@ -1,29 +1,48 @@
-const openMenu = document.querySelector(".menu");
+const menu = document.querySelector(".menu");
 const overlay = document.querySelector(".overlay");
 
-const list = openMenu.classList;
-const overlayClassList = overlay.classList;
+const state = {
+  menuIsOpen: false,
+  overlayIsOn: false,
+};
 
-openMenu.addEventListener("click", () => {
-  if (list.contains("open")) {
-    list.remove("open");
+menu.addEventListener("click", () => {
+  if (state.menuIsOpen && state.overlayIsOn) {
+    menuClose(menu, state);
+    overlayOff(overlay, state);
   } else {
-    list.add("open");
-  }
-
-  if (overlayClassList.contains("overlay-on")) {
-    overlayClassList.remove("overlay-on");
-  } else {
-    overlayClassList.add("overlay-on");
+    menuOpen(menu, state);
+    overlayOn(overlay, state);
   }
 });
 
 overlay.addEventListener("click", () => {
-  if (list.contains("open")) {
-    list.remove("open");
-  }
-
-  if (overlayClassList.contains("overlay-on")) {
-    overlayClassList.remove("overlay-on");
-  }
+  menuClose(menu, state);
+  overlayOff(overlay, state);
 });
+
+function overlayOn(overlay, state) {
+  addClass("overlay-on", overlay.classList);
+  state.overlayIsOn = true;
+}
+function overlayOff(overlay, state) {
+  removeClass("overlay-on", overlay.classList);
+  state.overlayIsOn = false;
+}
+
+function menuOpen(menu, state) {
+  addClass("open", menu.classList);
+  state.menuIsOpen = true;
+}
+
+function menuClose(menu, state) {
+  removeClass("open", menu.classList);
+  state.menuIsOpen = false;
+}
+
+function addClass(className, classList) {
+  classList.add(className);
+}
+function removeClass(className, classList) {
+  classList.remove(className);
+}
